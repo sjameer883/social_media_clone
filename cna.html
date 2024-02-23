@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Account</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+        /* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    margin: 0;
+    background-image: url(bg1.jpeg);
+    background-size: 100%;
+}
+
+.registration-container {
+    text-align: center;
+}
+
+.registration-box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 340px;
+    margin: 0 auto;
+}
+
+img {
+    width: 200px;
+    margin-top: 50px;
+    border-radius: 50%;
+    position: relative;
+    top: 30px;
+    padding-top: 20px;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #f06363;
+}
+
+form input {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.birthdate {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.birthdate select {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.gender-label {
+    text-align: left;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #333;
+}
+
+.gender {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.gender input[type="radio"] {
+    margin-right: 5px;
+}
+
+.terms {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 20px;
+}
+
+.terms a {
+    color:  #f06363;;
+    text-decoration: none;
+}
+
+.terms a:hover {
+    text-decoration: underline;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #f06363;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.create-page {
+    font-size: 12px;
+    color: #333;
+    margin-top: 15px;
+
+}
+#dob{
+    width: 270px;
+}
+a{
+    text-decoration: none;
+    color: #f06363;
+}
+button[submit] :hover{
+    transition: step-start;
+    
+}
+
+    </style>
+</head>
+<body>
+    <div class="registration-container">
+        <div class="registration-box">
+            <img src="connectoWorld.jpg" alt="Logo">
+            <h2>Create a New Account</h2>
+            <form action="index1.html">
+                <input type="text" placeholder="First Name" required>
+                <input type="text" placeholder="Last Name" required>
+                <input type="phone" placeholder="Mobile number or email address" required>
+                <input type="password" placeholder="Create password" required>
+                <input type="password" placeholder="Confirm password" required>
+                <div class="dob-container">
+                    <input type="text" id="dob" readonly placeholder="Date of Birth" required>
+                    <span id="calendar-icon" class="calendar-icon">&#128197;</span>
+                </div>
+                
+                <p class="gender-label">Gender</p>
+                <div class="gender">
+                    <input type="radio" id="male" name="gender" value="male">
+                    <label for="male">Male</label>
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">Female</label>
+                    <input type="radio" id="other" name="gender" value="other">
+                    <label for="other">Other</label>
+                </div>
+                <p class="terms">By clicking Sign Up, you agree to our <a href="#">Terms</a>, <a href="#">Data Policy</a> and <a href="#">Cookie Policy</a>. You may receive SMS notifications from us and can opt out at any time.</p>
+                <button type="submit">Sign Up</button>
+            </form>
+            <a href="login.html">Already have Account?</a>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function() {
+    // Initialize the Datepicker
+    $("#dob").datepicker({
+        dateFormat: "dd MM yy",
+        changeMonth: true,
+        changeYear: true,
+        yearRange: "1950:c"
+
+    });
+
+    // Function to handle form submission
+    function handleSubmit() {
+        const dob = $("#dob").val();
+        const resultElement = $("#result");
+        resultElement.text(`Selected Date of Birth: ${dob}`);
+    }
+
+    // Add event listener to the submit button
+    const submitButton = $("#submit-btn");
+    submitButton.click(handleSubmit);
+
+    // Handle calendar icon click to open the Datepicker
+    const calendarIcon = $("#calendar-icon");
+    calendarIcon.click(function() {
+        $("#dob").datepicker("show");
+    });
+});
+
+    </script>
+</body>
+</html>
